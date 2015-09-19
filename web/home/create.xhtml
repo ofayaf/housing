@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <body>
+
+        <ui:composition template="./../template/userCreateAuth.xhtml">
+
+            <ui:define name="title">
+                
+                Create Home
+            </ui:define>
+            
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+                <panel>
+                    <h:form>
+                        <h1>Home</h1>
+                        <hr></hr>
+                        <h2>Create House</h2>   
+                        <h:panelGrid columns="2">
+                            <label>IdHome: </label>
+                            <h:inputText value="#{createHome.idhome}" required="true" requiredMessage="Is necessary an ID!"/>
+                            <label>City: </label>
+                            <h:inputText value="#{createHome.city}" required="true" requiredMessage="Is necessary a city!"/>
+                            <label>Contract Type: </label>
+                            <h:inputText value="#{createHome.contractType}" required="true" requiredMessage="Is necessary a contract type!"/>
+                            <label>Address: </label>
+                            <h:inputText value="#{createHome.homeAddress}" required="true" requiredMessage="Is necessary an address!"/>
+                            <label>Type: </label>
+                            <h:inputText value="#{createHome.homeType}" required="true" requiredMessage="Is necessary a type of home!"/>
+                            <label>Value: </label>
+                            <h:inputText value="#{createHome.homeValue}" required="true" requiredMessage="Is necessary an amount!"/>
+                            <label>IdPerson: </label>
+                            <h:inputText value="#{createHome.idPerson}" required="true" requiredMessage="Is necessary a idPerson!"/>
+                        </h:panelGrid>
+                        <br/>
+                        <h:commandButton action="#{createHome.createHome()}" value="Create"/>
+                        <br/>
+                        <br/>
+                        <label>Message =  </label>
+                        <h:outputText value="#{createHome.message}"/>
+                        <br/>
+                        <br/>
+                        <a href="#">Return</a>
+                        <br/>  
+                    </h:form>
+                </panel>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

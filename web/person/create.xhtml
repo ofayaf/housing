@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <body>
+
+        <ui:composition template="./../template/userCreateAuth.xhtml">
+
+            <ui:define name="title">
+                
+                Create Account Person
+            </ui:define>
+            
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+                <panel>
+                    <h:form>
+                        <h1>Person</h1>
+                        <hr></hr>
+                        <h2>Create Account</h2>   
+                        <h:panelGrid columns="2">
+                            <label>IdPerson: </label>
+                            <h:inputText value="#{createPerson.idperson}" required="true" requiredMessage="Is necessary a name!"/>
+                            <label>Name: </label>
+                            <h:inputText value="#{createPerson.name}" required="true" requiredMessage="Is necessary a name!"/>
+                            <label>Last Name: </label>
+                            <h:inputText value="#{createPerson.lastName}" required="true" requiredMessage="Is necessary a last name!"/>
+                            <label>Document: </label>
+                            <h:inputText value="#{createPerson.document}" required="true" requiredMessage="Is necessary a document!"/>
+                            <label> Profession: </label>
+                            <h:inputText value="#{createPerson.profession}" required="true" requiredMessage="Is necessary a last name!"/>
+                            <label> Salary: </label>
+                            <h:inputText value="#{createPerson.salary}" required="true" requiredMessage="Is necessary a last name!"/>
+                            <label> Phone: </label>
+                            <h:inputText value="#{createPerson.phone}" required="true" requiredMessage="Is necessary a last name!"/>
+                            <label> Address: </label>
+                            <h:inputText value="#{createPerson.address}" required="true" requiredMessage="Is necessary a last name!"/>
+                            <label> E-Mail: </label>
+                            <h:inputText value="#{createPerson.email}" required="true" requiredMessage="Is necessary a last name!"/>
+                            <label> User: </label>
+                            <h:inputText value="#{createPerson.user}" required="true" requiredMessage="Is necessary a last name!"/>
+                            <label>Password: </label>
+                            <h:inputSecret value="#{createPerson.password}" required="true" requiredMessage="Is necessary a password!"/>                                
+                            <label>Rol: </label>
+                            <h:inputText value="#{createPerson.rol}" required="true" requiredMessage="Is necessary a last name!"/>                            
+                        </h:panelGrid>
+                        <br/>
+                        <h:commandButton action="#{createPerson.createPerson()}" value="Create"/>
+                        <br/>
+                        <br/>
+                        <label>Message =  </label>
+                        <h:outputText value="#{createPerson.message}"/>
+                        <br/>
+                        <br/>
+                        <a href="#">Return</a>
+                        <br/>  
+                    </h:form>
+                </panel>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

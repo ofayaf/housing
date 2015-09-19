@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <body>
+
+        <ui:composition template="./../template/userCreateAuth.xhtml">
+
+            <ui:define name="title">
+                
+                Create Benefit
+            </ui:define>
+            
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+                <panel>
+                    <h:form>
+                        <h1>Benefit</h1>
+                        <hr></hr>
+                        <h2>Create Benefit</h2>   
+                        <h:panelGrid columns="2">
+                            
+                            <label>IdBenefit: </label>
+                            <h:inputText value="#{createBenefit.idbenefit}" required="true" requiredMessage="Is necessary an ID!"/>
+                            <label>Description: </label>
+                            <h:inputText value="#{createBenefit.benefitdescription}" required="true" requiredMessage="Is necessary a Description!"/>
+                            <label>Benefit Type: </label>
+                            <h:inputText value="#{createBenefit.benefittype}" required="true" requiredMessage="Is necessary a Type!"/>
+                            <label>Benefit Value: </label>
+                            <h:inputText value="#{createBenefit.benefitvalue}" required="true" requiredMessage="Is necessary a value!"/>
+                            <label>Max Salary Allowed: </label>
+                            <h:inputText value="#{createBenefit.maxsalaryallowed}" required="true" requiredMessage="Is necessary a Salary!"/>
+                            <label>IdHome: </label>
+                            <h:inputText value="#{createBenefit.idhome}" required="true" requiredMessage="Is necessary an ID for Home!"/>
+                        </h:panelGrid>
+                        <br/>
+                        <h:commandButton action="#{createBenefit.createBenefit()}" value="Create"/>
+                        <br/>
+                        <br/>
+                        <label>Message =  </label>
+                        <h:outputText value="#{createBenefit.message}"/>
+                        <br/>
+                        <br/>
+                        <a href="#">Return</a>
+                        <br/>  
+                    </h:form>
+                </panel>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
