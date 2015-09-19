@@ -53,8 +53,6 @@ public class PersonDAO {
         
         Query q= em.createQuery(consult);
         
-        
-        
         try {
             person=(Person) q.getSingleResult();
             

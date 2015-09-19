@@ -8,6 +8,7 @@ package BusinessLogic.Controller;
 import DataAccess.DAO.HomeDAO;
 import DataAccess.Entity.Home;
 import java.math.BigInteger;
+import java.util.List;
 
 /**
  *
@@ -36,5 +37,16 @@ public class ManageHome {
             return "The house could not be created!";
         }
     }
+    
+    public  String listAll(){
+       HomeDAO homeDAO = new HomeDAO();
+       List<Home> homeE = homeDAO.findAll();
+       if (homeE != null) {
+           System.out.println(homeE.toArray());
+            return "Here is your houses list";
+        } else {
+            return "The list could not be loaded!";
+        }
+   }
     
 }
