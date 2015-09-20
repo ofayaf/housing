@@ -1,70 +1,55 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    
-    <body>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-        <ui:composition template="./../template/userCreateAuth.xhtml">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePersonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_idperson}" for="idperson" />
+                    <h:inputText id="idperson" value="#{personController.selected.idperson}" title="#{bundle.CreatePersonTitle_idperson}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_idperson}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_address}" for="address" />
+                    <h:inputTextarea rows="4" cols="30" id="address" value="#{personController.selected.address}" title="#{bundle.CreatePersonTitle_address}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_document}" for="document" />
+                    <h:inputText id="document" value="#{personController.selected.document}" title="#{bundle.CreatePersonTitle_document}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_EMail}" for="EMail" />
+                    <h:inputText id="EMail" value="#{personController.selected.EMail}" title="#{bundle.CreatePersonTitle_EMail}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_lastName}" for="lastName" />
+                    <h:inputText id="lastName" value="#{personController.selected.lastName}" title="#{bundle.CreatePersonTitle_lastName}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{personController.selected.name}" title="#{bundle.CreatePersonTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{personController.selected.password}" title="#{bundle.CreatePersonTitle_password}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{personController.selected.phone}" title="#{bundle.CreatePersonTitle_phone}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_profession}" for="profession" />
+                    <h:inputText id="profession" value="#{personController.selected.profession}" title="#{bundle.CreatePersonTitle_profession}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_rol}" for="rol" />
+                    <h:inputText id="rol" value="#{personController.selected.rol}" title="#{bundle.CreatePersonTitle_rol}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_salary}" for="salary" />
+                    <h:inputText id="salary" value="#{personController.selected.salary}" title="#{bundle.CreatePersonTitle_salary}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_user}" for="user" />
+                    <h:inputText id="user" value="#{personController.selected.user}" title="#{bundle.CreatePersonTitle_user}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personController.create}" value="#{bundle.CreatePersonSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{personController.prepareList}" value="#{bundle.CreatePersonShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePersonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
 
-            <ui:define name="title">
-                
-                Create Account Person
-            </ui:define>
-            
-            <ui:define name="top">
-                top
-            </ui:define>
-
-            <ui:define name="content">
-                <panel>
-                    <h:form>
-                        <h1>Person</h1>
-                        <hr></hr>
-                        <h2>Create Account</h2>   
-                        <h:panelGrid columns="2">
-                            <label>IdPerson: </label>
-                            <h:inputText value="#{createPerson.idperson}" required="true" requiredMessage="Is necessary a name!"/>
-                            <label>Name: </label>
-                            <h:inputText value="#{createPerson.name}" required="true" requiredMessage="Is necessary a name!"/>
-                            <label>Last Name: </label>
-                            <h:inputText value="#{createPerson.lastName}" required="true" requiredMessage="Is necessary a last name!"/>
-                            <label>Document: </label>
-                            <h:inputText value="#{createPerson.document}" required="true" requiredMessage="Is necessary a document!"/>
-                            <label> Profession: </label>
-                            <h:inputText value="#{createPerson.profession}" required="true" requiredMessage="Is necessary a last name!"/>
-                            <label> Salary: </label>
-                            <h:inputText value="#{createPerson.salary}" required="true" requiredMessage="Is necessary a last name!"/>
-                            <label> Phone: </label>
-                            <h:inputText value="#{createPerson.phone}" required="true" requiredMessage="Is necessary a last name!"/>
-                            <label> Address: </label>
-                            <h:inputText value="#{createPerson.address}" required="true" requiredMessage="Is necessary a last name!"/>
-                            <label> E-Mail: </label>
-                            <h:inputText value="#{createPerson.email}" required="true" requiredMessage="Is necessary a last name!"/>
-                            <label> User: </label>
-                            <h:inputText value="#{createPerson.user}" required="true" requiredMessage="Is necessary a last name!"/>
-                            <label>Password: </label>
-                            <h:inputSecret value="#{createPerson.password}" required="true" requiredMessage="Is necessary a password!"/>                                
-                            <label>Rol: </label>
-                            <h:inputText value="#{createPerson.rol}" required="true" requiredMessage="Is necessary a last name!"/>                            
-                        </h:panelGrid>
-                        <br/>
-                        <h:commandButton action="#{createPerson.createPerson()}" value="Create"/>
-                        <br/>
-                        <br/>
-                        <label>Message =  </label>
-                        <h:outputText value="#{createPerson.message}"/>
-                        <br/>
-                        <br/>
-                        <a href="#">Return</a>
-                        <br/>  
-                    </h:form>
-                </panel>
-                
-            </ui:define>
-
-        </ui:composition>
-
-    </body>
 </html>

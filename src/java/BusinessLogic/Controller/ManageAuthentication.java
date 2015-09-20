@@ -6,6 +6,7 @@
 package BusinessLogic.Controller;
 
 import DataAccess.DAO.PersonDAO;
+import DataAccess.DAO.PersonFacade;
 import DataAccess.Entity.Person;
 
 /**
@@ -16,11 +17,10 @@ public class ManageAuthentication {
     
    public  String authentication(String user, String password){
        
-       PersonDAO personDAO = new PersonDAO();
+       PersonFacade personDAO = new PersonFacade();
        
        
         Person personE = personDAO.findByUser(user,password);
-        
         
         if (personE != null) {
             //Obtengo el id de person para crear la seccion y todo los datos
@@ -29,6 +29,7 @@ public class ManageAuthentication {
         } else {
             return "User not found!";
         }
+
    }
    
    

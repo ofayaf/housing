@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPersoncollecthomeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPersoncollecthomeEmpty}" rendered="#{personcollecthomeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{personcollecthomeController.items.rowCount > 0}">
+                    <h:outputText value="#{personcollecthomeController.pagination.pageFirstItem + 1}..#{personcollecthomeController.pagination.pageLastItem + 1}/#{personcollecthomeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{personcollecthomeController.previous}" value="#{bundle.Previous} #{personcollecthomeController.pagination.pageSize}" rendered="#{personcollecthomeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{personcollecthomeController.next}" value="#{bundle.Next} #{personcollecthomeController.pagination.pageSize}" rendered="#{personcollecthomeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{personcollecthomeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersoncollecthomeTitle_collectionDescription}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.collectionDescription}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersoncollecthomeTitle_idcollection}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idcollection}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersoncollecthomeTitle_idperson}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idperson}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersoncollecthomeTitle_hometype}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hometype}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersoncollecthomeTitle_idhome}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idhome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{personcollecthomeController.prepareView}" value="#{bundle.ListPersoncollecthomeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{personcollecthomeController.prepareEdit}" value="#{bundle.ListPersoncollecthomeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{personcollecthomeController.destroy}" value="#{bundle.ListPersoncollecthomeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{personcollecthomeController.prepareCreate}" value="#{bundle.ListPersoncollecthomeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPersoncollecthomeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePersoncollecthomeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePersoncollecthomeLabel_collectionDescription}" for="collectionDescription" />
+                    <h:inputText id="collectionDescription" value="#{personcollecthomeController.selected.collectionDescription}" title="#{bundle.CreatePersoncollecthomeTitle_collectionDescription}" required="true" requiredMessage="#{bundle.CreatePersoncollecthomeRequiredMessage_collectionDescription}"/>
+                    <h:outputLabel value="#{bundle.CreatePersoncollecthomeLabel_idcollection}" for="idcollection" />
+                    <h:inputText id="idcollection" value="#{personcollecthomeController.selected.idcollection}" title="#{bundle.CreatePersoncollecthomeTitle_idcollection}" required="true" requiredMessage="#{bundle.CreatePersoncollecthomeRequiredMessage_idcollection}"/>
+                    <h:outputLabel value="#{bundle.CreatePersoncollecthomeLabel_idperson}" for="idperson" />
+                    <h:inputText id="idperson" value="#{personcollecthomeController.selected.idperson}" title="#{bundle.CreatePersoncollecthomeTitle_idperson}" required="true" requiredMessage="#{bundle.CreatePersoncollecthomeRequiredMessage_idperson}"/>
+                    <h:outputLabel value="#{bundle.CreatePersoncollecthomeLabel_hometype}" for="hometype" />
+                    <h:inputText id="hometype" value="#{personcollecthomeController.selected.hometype}" title="#{bundle.CreatePersoncollecthomeTitle_hometype}" required="true" requiredMessage="#{bundle.CreatePersoncollecthomeRequiredMessage_hometype}"/>
+                    <h:outputLabel value="#{bundle.CreatePersoncollecthomeLabel_idhome}" for="idhome" />
+                    <h:inputText id="idhome" value="#{personcollecthomeController.selected.idhome}" title="#{bundle.CreatePersoncollecthomeTitle_idhome}" required="true" requiredMessage="#{bundle.CreatePersoncollecthomeRequiredMessage_idhome}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personcollecthomeController.create}" value="#{bundle.CreatePersoncollecthomeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{personcollecthomeController.prepareList}" value="#{bundle.CreatePersoncollecthomeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePersoncollecthomeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,59 +1,45 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    
-    <body>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-        <ui:composition template="./../template/userCreateAuth.xhtml">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateBenefitTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateBenefitLabel_idbenefit}" for="idbenefit" />
+                    <h:inputText id="idbenefit" value="#{benefitController.selected.idbenefit}" title="#{bundle.CreateBenefitTitle_idbenefit}" required="true" requiredMessage="#{bundle.CreateBenefitRequiredMessage_idbenefit}"/>
+                    <h:outputLabel value="#{bundle.CreateBenefitLabel_benefitdescription}" for="benefitdescription" />
+                    <h:inputTextarea rows="4" cols="30" id="benefitdescription" value="#{benefitController.selected.benefitdescription}" title="#{bundle.CreateBenefitTitle_benefitdescription}" />
+                    <h:outputLabel value="#{bundle.CreateBenefitLabel_benefittype}" for="benefittype" />
+                    <h:inputText id="benefittype" value="#{benefitController.selected.benefittype}" title="#{bundle.CreateBenefitTitle_benefittype}" />
+                    <h:outputLabel value="#{bundle.CreateBenefitLabel_benefitvalue}" for="benefitvalue" />
+                    <h:inputText id="benefitvalue" value="#{benefitController.selected.benefitvalue}" title="#{bundle.CreateBenefitTitle_benefitvalue}" />
+                    <h:outputLabel value="#{bundle.CreateBenefitLabel_maxsalaryallowed}" for="maxsalaryallowed" />
+                    <h:inputText id="maxsalaryallowed" value="#{benefitController.selected.maxsalaryallowed}" title="#{bundle.CreateBenefitTitle_maxsalaryallowed}" />
+                    <h:outputLabel value="#{bundle.CreateBenefitLabel_idhome}" for="idhome" />
+                    <h:selectOneMenu id="idhome" value="#{benefitController.selected.idhome}" title="#{bundle.CreateBenefitTitle_idhome}" >
+                        <f:selectItems value="#{homeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{benefitController.create}" value="#{bundle.CreateBenefitSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{benefitController.prepareList}" value="#{bundle.CreateBenefitShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateBenefitIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
 
-            <ui:define name="title">
-                
-                Create Benefit
-            </ui:define>
-            
-            <ui:define name="top">
-                top
-            </ui:define>
-
-            <ui:define name="content">
-                <panel>
-                    <h:form>
-                        <h1>Benefit</h1>
-                        <hr></hr>
-                        <h2>Create Benefit</h2>   
-                        <h:panelGrid columns="2">
-                            
-                            <label>IdBenefit: </label>
-                            <h:inputText value="#{createBenefit.idbenefit}" required="true" requiredMessage="Is necessary an ID!"/>
-                            <label>Description: </label>
-                            <h:inputText value="#{createBenefit.benefitdescription}" required="true" requiredMessage="Is necessary a Description!"/>
-                            <label>Benefit Type: </label>
-                            <h:inputText value="#{createBenefit.benefittype}" required="true" requiredMessage="Is necessary a Type!"/>
-                            <label>Benefit Value: </label>
-                            <h:inputText value="#{createBenefit.benefitvalue}" required="true" requiredMessage="Is necessary a value!"/>
-                            <label>Max Salary Allowed: </label>
-                            <h:inputText value="#{createBenefit.maxsalaryallowed}" required="true" requiredMessage="Is necessary a Salary!"/>
-                            <label>IdHome: </label>
-                            <h:inputText value="#{createBenefit.idhome}" required="true" requiredMessage="Is necessary an ID for Home!"/>
-                        </h:panelGrid>
-                        <br/>
-                        <h:commandButton action="#{createBenefit.createBenefit()}" value="Create"/>
-                        <br/>
-                        <br/>
-                        <label>Message =  </label>
-                        <h:outputText value="#{createBenefit.message}"/>
-                        <br/>
-                        <br/>
-                        <a href="#">Return</a>
-                        <br/>  
-                    </h:form>
-                </panel>
-                
-            </ui:define>
-
-        </ui:composition>
-
-    </body>
 </html>
