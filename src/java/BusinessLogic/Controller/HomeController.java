@@ -192,7 +192,6 @@ public class HomeController implements Serializable {
         relation.setCollectionDescription("");
         relation.setIdcollection(new Long("1"));
         
-        
         controller.setCurrent(relation);
         String c = controller.create();
         /*if(c != null){
