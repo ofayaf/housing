@@ -20,7 +20,7 @@ public class HomeFacade extends AbstractFacade<Home> {
     private EntityManager em;
 
     @Override
-    protected EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return em;
     }
 

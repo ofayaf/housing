@@ -17,6 +17,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.persistence.EntityManager;
 
 @ManagedBean(name = "personcollecthomeController")
 @SessionScoped
@@ -37,7 +38,13 @@ public class PersoncollecthomeController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public PersoncollecthomeController() {
+    /**
+     *
+     * @param em
+     */
+    public PersoncollecthomeController(EntityManager em) {
+        ejbFacade = new PersoncollecthomeFacade();
+        ejbFacade.setEm(em);
     }
 
     public Personcollecthome getSelected() {
@@ -89,6 +96,8 @@ public class PersoncollecthomeController implements Serializable {
 
     public String create() {
         try {
+            System.out.println("aaaaaaaaaaaaaa"+current.toString());
+            System.out.println("bbbbbbbbbbbbbb "+ ejbFacade.toString());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("PersoncollecthomeCreated"));
             return prepareCreate();

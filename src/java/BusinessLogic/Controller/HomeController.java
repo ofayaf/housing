@@ -184,8 +184,7 @@ public class HomeController implements Serializable {
     
     public void confirm(){
         Personcollecthome relation = new Personcollecthome();
-        PersoncollecthomeFacade p = new PersoncollecthomeFacade();
-        PersoncollecthomeController controller = new PersoncollecthomeController();
+        PersoncollecthomeController controller = new PersoncollecthomeController(ejbFacade.getEntityManager());
         controller.getSelected();
         relation.setIdhome(current.getIdhome());
         relation.setHometype(current.getHometype());
@@ -195,9 +194,13 @@ public class HomeController implements Serializable {
         
         
         controller.setCurrent(relation);
-        System.out.println(controller.getCurrent().getIdhome());
-        controller.create();
-        
+        String c = controller.create();
+        /*if(c != null){
+            return "the house was added sucessfully";
+        }
+        else{
+            return "the house could not be added";
+        }*/
     }
     
     

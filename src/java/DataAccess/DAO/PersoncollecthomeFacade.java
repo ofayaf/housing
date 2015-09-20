@@ -19,12 +19,17 @@ public class PersoncollecthomeFacade extends AbstractFacade<Personcollecthome> {
     @PersistenceContext(unitName = "housingPU")
     private EntityManager em;
 
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
     @Override
-    protected EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return em;
     }
 
     public PersoncollecthomeFacade() {
+        
         super(Personcollecthome.class);
     }
     
